@@ -6,5 +6,4 @@ class Photography extends Component {
     }
 }
 
-
 export default Photography;
