@@ -1,10 +1,13 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-
-class TitleX extends Component {
-    render() {
-        return(<h1>{this.props.title}</h1>)
-    }
+function TitleX(props) {
+    return(<h1>{props.title}</h1>)
 }
+
+// class TitleX extends Component {
+//     render() {
+//         return(<h1>{this.props.title}</h1>)
+//     }
+// }
 
 export default TitleX;
