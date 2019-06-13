@@ -26,7 +26,7 @@ class Main extends Component {
     }
 
     removePhoto(postRemoved) {
-            // console.log(postRemoved.description);
+    
             this.setState((state)=> ({
                 posts : state.posts.filter(post => post !== postRemoved)
             }));
