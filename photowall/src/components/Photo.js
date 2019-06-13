@@ -5,7 +5,7 @@ function Photo(props) {
         <img className="photo" src={post.imageLink} alt={post.description}></img>
         <figcaption className="caption"><p>{post.description}</p></figcaption>
         <div className="button-container">
-             <button className="remove-btn">Remove</button>
+             <button className="remove-btn" onClick={()=> {props.onRemovePhoto(post)}}>Remove</button>
         </div>
     </figure>;
 }
@@ -22,7 +22,6 @@ function Photo(props) {
 //             </div>
 //         </figure>;
 //     }
-
 // }
 
 export default Photo;
