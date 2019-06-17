@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import TitleX from './Title';
 import Photography from './Photography';
 import AddPhoto from './AddPhoto';
+import {Route} from 'react-router-dom';
 
 class Main extends Component {
     constructor() {
@@ -12,7 +13,7 @@ class Main extends Component {
        }
 
        this.removePhoto = this.removePhoto.bind(this)
-       this.navigate = this.navigate.bind(this)
+       // this.navigate = this.navigate.bind(this)
     }
     componentDidMount() {
         const data = stimulateFetchFromDB();
@@ -33,28 +34,26 @@ class Main extends Component {
             }));
     }
 
-    navigate() {
-        this.setState({
-            screen: 'add-photos'
-        })
-    }
+    // navigate() {
+    //     this.setState({
+    //         screen: 'add-photos'
+    //     })
+    // }
 
     render() {
-        return(     <div>
-            {
-                this.state.screen === "photos" && (
-                    <div>
-                    <TitleX title = {'Photography'}/>
-                    <Photography posts={this.state.posts} onRemovePhoto = {this.removePhoto} onNavigate = {this.navigate}/>
-                    </div>
-                )
-            }
-            {
-                this.state.screen ==="add-photos" &&(
-                    <div><AddPhoto/></div>
-                )
-            }
-                    </div>)
+        return( 
+                   <div>
+                        <Route exact path = "/" render ={()=> (
+                            <div>
+                                <TitleX title = {'Photography'}/>
+                                <Photography posts={this.state.posts} onRemovePhoto = {this.removePhoto} onNavigate = {this.navigate}/>
+                            </div>
+                        )}/>
+                      
+                        <Route path="/AddPhoto" component={AddPhoto}></Route>
+                        </div>
+                        )
+                   
     }
 }
 
