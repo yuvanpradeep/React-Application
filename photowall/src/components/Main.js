@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
 import TitleX from './Title';
 import Photography from './Photography';
+import AddPhoto from './AddPhoto';
 
 class Main extends Component {
     constructor() {
        super() // since we are extending we need to use super to use this keyword
        this.state = {
-        posts : []
+        posts : [],
+        screen: 'photos'
        }
 
        this.removePhoto = this.removePhoto.bind(this)
+       this.navigate = this.navigate.bind(this)
     }
     componentDidMount() {
         const data = stimulateFetchFromDB();
@@ -30,11 +33,27 @@ class Main extends Component {
             }));
     }
 
+    navigate() {
+        this.setState({
+            screen: 'add-photos'
+        })
+    }
+
     render() {
-        return(<div><TitleX title = {'Photography'}/>
-                    {/* <List lists = {['Abcd', 'QWerty']}/>
-                    <List lists ={['New zealand', 'South Africa']}/> */}
-                    <Photography posts={this.state.posts} onRemovePhoto = {this.removePhoto}/>
+        return(     <div>
+            {
+                this.state.screen === "photos" && (
+                    <div>
+                    <TitleX title = {'Photography'}/>
+                    <Photography posts={this.state.posts} onRemovePhoto = {this.removePhoto} onNavigate = {this.navigate}/>
+                    </div>
+                )
+            }
+            {
+                this.state.screen ==="add-photos" &&(
+                    <div><AddPhoto/></div>
+                )
+            }
                     </div>)
     }
 }

@@ -3,7 +3,12 @@ import Photo from './Photo';
 import PropTypes from 'prop-types';
 
 function Photography(props) {
-    return <div className="photo-grid">{props.posts.map((post, index) => <Photo key = {index} post = {post} onRemovePhoto={props.onRemovePhoto}/>)}</div>;
+    return   <div> 
+            <a className="add-icon" onClick={props.onNavigate} href='#AddPhoto'></a>
+            {/* <button className="add-icon" onClick={props.onNavigate}>+</button> */}
+             <div className="photo-grid">{props.posts.map((post, index) => 
+             <Photo key = {index} post = {post} onRemovePhoto={props.onRemovePhoto}/>)}
+             </div></div>
 }
 
 // class Photography extends Component {
