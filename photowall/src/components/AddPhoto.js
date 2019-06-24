@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 // checking for the commit
 
 
-
+// Checking the stash setting
 class AddPhoto extends Component {
     render() {
         return (<div>
